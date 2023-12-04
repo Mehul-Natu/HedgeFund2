@@ -67,7 +67,7 @@ object BatchFeatureExtraction extends App {
     }
 
     // Directory containing CSV files
-    val directoryPath = "src/main/fetched_data"
+    val directoryPath = "src/main/distributed_data/folder13"
     val directory = new File(directoryPath)
     val files = directory.listFiles.filter(_.isFile).filter(_.getName.endsWith(".csv"))
 
@@ -75,7 +75,9 @@ object BatchFeatureExtraction extends App {
     val allEigenvalues = files.map(file => processFile(file.getPath)).reduce(_ union _)
 
     // Write the results to a new CSV file
-    allEigenvalues.coalesce(1).write.option("header", "true").csv("src/main/data_with_feature/temp1")
+    allEigenvalues.coalesce(1).write.option("header", "true").csv("src/main/data_with_feature/temp13")
+
+    println("Batch processing complete.")
 
     spark.stop()
 }
