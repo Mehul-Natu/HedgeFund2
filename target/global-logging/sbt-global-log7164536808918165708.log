@@ -1,0 +1,122 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.9.7 (Oracle Corporation Java 21.0.1)
+[debug]       Load.loadUnit: plugins took 34.142292ms
+[debug]       Load.loadUnit: defsScala took 0.088667ms
+[debug] [Loading] Scanning directory /Users/susanliu/.sbt/1.0/plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /Users/susanliu/.sbt/1.0/plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 9.225375 ms
+[debug]           Load.resolveProject(global-plugins) took 28.51425ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: /Users/susanliu/.sbt/1.0/plugins, plugins: List(<none>))) took 47.896375ms
+[debug] [Loading] Done in /Users/susanliu/.sbt/1.0/plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 55.526917ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.296125ms
+[debug]     Load.loadUnit(file:/Users/susanliu/.sbt/1.0/plugins/, ...) took 95.587958ms
+[debug]   Load.apply: load took 583.429209ms
+[debug]   Load.apply: resolveProjects took 2.126209ms
+[debug]   Load.apply: finalTransforms took 28.017959ms
+[debug]   Load.apply: config.delegates took 3.702709ms
+[debug]   Load.apply: Def.make(settings)... took 211.283834ms
+[debug]   Load.apply: structureIndex took 63.839875ms
+[debug]   Load.apply: mkStreams took 1.211667ms
+[info] loading global plugins from /Users/susanliu/.sbt/1.0/plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 1502.609625ms
+[debug]           Load.loadUnit: plugins took 5.999209ms
+[debug]           Load.loadUnit: defsScala took 0.001542ms
+[debug] [Loading] Scanning directory /Users/susanliu/Documents/CSYE7200/HedgeFund2/project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /Users/susanliu/Documents/CSYE7200/HedgeFund2/project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 0.798125 ms
+[debug]               Load.resolveProject(hedgefund2-build) took 0.46725ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id hedgefund2-build, base: /Users/susanliu/Documents/CSYE7200/HedgeFund2/project, plugins: List(<none>))) took 1.483541ms
+[debug] [Loading] Done in /Users/susanliu/Documents/CSYE7200/HedgeFund2/project, returning: (hedgefund2-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 2.158041ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.003875ms
+[debug]         Load.loadUnit(file:/Users/susanliu/Documents/CSYE7200/HedgeFund2/project/, ...) took 8.430083ms
+[debug]       Load.apply: load took 8.925667ms
+[debug]       Load.apply: resolveProjects took 0.051667ms
+[debug]       Load.apply: finalTransforms took 4.795875ms
+[debug]       Load.apply: config.delegates took 0.178583ms
+[debug]       Load.apply: Def.make(settings)... took 81.844334ms
+[debug]       Load.apply: structureIndex took 16.750208ms
+[debug]       Load.apply: mkStreams took 0.001917ms
+[info] loading project definition from /Users/susanliu/Documents/CSYE7200/HedgeFund2/project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 225.811ms
+[debug]     Load.loadUnit: defsScala took 0.001625ms
+[debug] [Loading] Scanning directory /Users/susanliu/Documents/CSYE7200/HedgeFund2
+[debug]       Load.loadUnit: mkEval took 2.876625ms
+[debug] [Loading] Found root project root w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.355458 ms
+[info] loading settings for project root from build.sbt ...
+[debug]         Load.resolveProject(root) took 1.194959ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root, base: /Users/susanliu/Documents/CSYE7200/HedgeFund2, plugins: List(<none>))) took 3.6445ms
+[debug] [Loading] Done in /Users/susanliu/Documents/CSYE7200/HedgeFund2, returning: (root)
+[debug]     Load.loadUnit: loadedProjectsRaw took 1495.713833ms
+[debug]     Load.loadUnit: cleanEvalClasses took 3.904541ms
+[debug]   Load.loadUnit(file:/Users/susanliu/Documents/CSYE7200/HedgeFund2/, ...) took 1725.798583ms
+[debug] Load.apply: load took 1726.556333ms
+[debug] Load.apply: resolveProjects took 0.053875ms
+[debug] Load.apply: finalTransforms took 6.075417ms
+[debug] Load.apply: config.delegates took 0.151667ms
+[debug] Load.apply: Def.make(settings)... took 42.90425ms
+[debug] Load.apply: structureIndex took 13.49125ms
+[debug] Load.apply: mkStreams took 0.001666ms
+[info] set current project to HedgeFund2 (in build file:/Users/susanliu/Documents/CSYE7200/HedgeFund2/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(shell, None, None)
+[info] sbt server started at local:///Users/susanliu/.sbt/1.0/server/9cf6c8964a232b4c2176/sock
+[debug] Writing bsp connection file
+[info] started sbt server
