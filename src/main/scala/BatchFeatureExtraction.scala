@@ -3,7 +3,7 @@ import org.apache.spark.sql.functions._
 import org.apache.spark.sql.expressions.Window
 
 import java.io.File
-
+// This is to extract the eigenvalues in batches
 object BatchFeatureExtraction extends App {
     val spark: SparkSession = SparkSession.builder()
         .appName("StockFeatureExtraction")
@@ -12,19 +12,20 @@ object BatchFeatureExtraction extends App {
     import spark.implicits._
 
     // Function to process a single CSV file and return eigenvalues
+    // Eigenvalues include: DailyReturn, SMA, RSI, bollinger bands, VWAP, ROC
+    // I just analyzed the stock price data ot the nearest 30 days in our dataset
     def processFile(filePath: String): DataFrame = {
         val df = spark.read.option("header", "true").option("inferSchema", "true").csv(filePath).limit(30)
         val windowSpec = Window.orderBy("timestamp")
 
-        // 计算日收益率
+        // calculate: DailyReturn
         val dailyReturn = df.withColumn("dailyReturn", (col("Close") - lag("Close", 1).over(windowSpec)) / lag("Close", 1).over(windowSpec))
 
-        // 计算移动平均线
-        // 计算简单移动平均线 (SMA)
+        // calculate: SMA
         val movingAverage30 = df
             .withColumn("SMA30", avg("Close").over(windowSpec.rowsBetween(-29, 0)))
 
-        // 计算RSI
+        // calculate: RSI
         val gain = dailyReturn.withColumn("Gain", when(col("dailyReturn") > 0, col("dailyReturn")).otherwise(0))
         val loss = dailyReturn.withColumn("Loss", when(col("dailyReturn") < 0, -col("dailyReturn")).otherwise(0))
         val avgGain = gain.withColumn("AvgGain", avg("Gain").over(windowSpec.rowsBetween(-29, -1)))
@@ -32,19 +33,19 @@ object BatchFeatureExtraction extends App {
         val rs = avgGain.join(avgLoss, "timestamp").withColumn("RS", col("AvgGain") / col("AvgLoss"))
         val rsi = rs.withColumn("RSI", lit(100) - (lit(100) / (col("RS") + 1)))
 
-        // 计算布林带
+        // calculate: bollinger bands
         val stdDev = stddev("Close").over(windowSpec.rowsBetween(-29, 0))
         val bollingerUpper = movingAverage30.withColumn("BollingerUpper", col("SMA30") + (stdDev * lit(2)))
         val bollingerLower = movingAverage30.withColumn("BollingerLower", col("SMA30") - (stdDev * lit(2)))
 
-        // 计算VWAP（假设有Volume列）
+        // calculate VWAP
         val vwap = df.withColumn("VWAP", sum($"Close" * $"Volume").over(windowSpec) / sum("Volume").over(windowSpec))
 
-        // 计算价格变化率 (ROC)
+        // calculate: ROC
         val closeLag = lag("Close", 1).over(windowSpec)
         val roc = df.withColumn("ROC", ($"Close" - closeLag) / closeLag)
 
-        // 组合所有特征
+        // join all eigenvalues into one DF
         val resultDf = df
             .join(movingAverage30.select("timestamp", "SMA30"), Seq("timestamp"))
             .join(rsi.select("timestamp", "RSI"), Seq("timestamp"))
@@ -54,6 +55,7 @@ object BatchFeatureExtraction extends App {
             .join(roc.select("timestamp", "ROC"), Seq("timestamp"))
             .orderBy("timestamp")
 
+        // get eigenvalues: calculate the avg of every column, then join into a new DF
         val first30RowsDf = resultDf.limit(30)
         first30RowsDf.select(
             lit(new File(filePath).getName).as("Stock_Name"),
@@ -66,6 +68,8 @@ object BatchFeatureExtraction extends App {
         )
     }
 
+    // I divided our data from src/main/fetched_data into distributed_data.
+    // Only this way worked. See: src/main/scala/FileDistributor
     // Directory containing CSV files
     val directoryPath = "src/main/distributed_data/folder13"
     val directory = new File(directoryPath)
@@ -74,7 +78,7 @@ object BatchFeatureExtraction extends App {
     // Process each file and collect the results
     val allEigenvalues = files.map(file => processFile(file.getPath)).reduce(_ union _)
 
-    // Write the results to a new CSV file
+    // Write the file with extracted eigenvalues into a new CSV file
     allEigenvalues.coalesce(1).write.option("header", "true").csv("src/main/data_with_feature/temp13")
 
     println("Batch processing complete.")

@@ -1,6 +1,7 @@
 import java.io.{File, PrintWriter, BufferedReader, FileReader}
 import scalaj.http._
 object StockDataFetcher {
+  // I used the api from alphavantage to fetch all the stock in S&P 500
   def fetchStockData(symbol: String, apiKey: String): String = {
     val url = "https://www.alphavantage.co/query"
     val response = Http(url)

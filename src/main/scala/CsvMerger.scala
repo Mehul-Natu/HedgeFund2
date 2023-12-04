@@ -1,6 +1,9 @@
 import org.apache.spark.sql.types.{StringType, StructField, StructType}
 import org.apache.spark.sql.{DataFrame, Row, SparkSession}
 
+
+// This is used to merge the CSV files in src/main/data_with_feature
+// Get: all stocks with their corresponding eigenvalues
 object CsvMerger extends App {
     val spark: SparkSession = SparkSession.builder()
         .appName("CSV Merger")
